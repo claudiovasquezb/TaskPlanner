@@ -15,6 +15,13 @@ module.exports = {
       },
       borderRadius: {
         DEFAULT: '0,625rem'
+      },
+      width: {
+        'custom-login': '46rem'
+      },
+      gridTemplateColumns: {
+        // Simple 16 column grid
+        'custom': '1fr minmax(0, 736px) 1fr',
       }
     },
   },
