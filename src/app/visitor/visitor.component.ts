@@ -4,8 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-visitor',
   standalone: true,
   imports: [],
-  templateUrl: './visitor.component.html',
-  styleUrl: './visitor.component.css'
+  templateUrl: './visitor.component.html'
 })
 export class VisitorComponent {
 
