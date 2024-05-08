@@ -1,27 +1,17 @@
 import { Routes } from '@angular/router';
-import { LoginComponent, PasswordRecoveryComponent, RegisterComponent } from './auth';
-import { BoardsComponent, HighlightsComponent } from './dashboard';
+import { LoginComponent, PasswordRecoveryComponent, RegisterComponent } from './modules/auth';
+import { BoardsComponent, HighlightsComponent } from './modules/dashboard';
 
 export const routes: Routes = [
     {
-        path: '', redirectTo: 'login', pathMatch: 'full'
-    },
-    { 
-        path: 'login', component: LoginComponent 
-    },
-    { 
-        path: 'register', component: RegisterComponent 
-    },
-    { 
-        path: 'password-recovery', component: PasswordRecoveryComponent 
+        path: '', redirectTo: 'auth/login', pathMatch: 'full'
     },
     {
-        path: 'dashboard', redirectTo: 'dashboard/boards', pathMatch: 'full'
+        path: 'auth',
+        loadChildren: () => import('./modules/auth/auth.routes').then(m => m.routes)
     },
-    { 
-        path: 'boards', component: BoardsComponent 
-    },
-    { 
-        path: 'highlights', component: HighlightsComponent 
+    {
+        path: 'dashboard',
+        loadChildren: () => import('./modules/dashboard/dashboard.routes').then(m => m.routes)
     }
 ];
