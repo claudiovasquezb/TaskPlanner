@@ -1,1 +1,2 @@
-export * from './dashboard/dashboard.component';
+export * from './boards/boards.component';
+export * from './highlights/highlights.component';

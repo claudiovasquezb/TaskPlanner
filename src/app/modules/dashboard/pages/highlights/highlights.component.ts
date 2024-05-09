@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { NavbarComponent, SidebarComponent } from '../../../../shared';
 
 @Component({

@@ -1,16 +1,12 @@
 import { Routes } from "@angular/router";
-import { BoardsComponent, HighlightsComponent } from "./components";
-import { DashboardComponent } from "./pages";
+import { BoardsComponent, HighlightsComponent } from "./pages";
 
 
 export const routes: Routes = [
-    // {
-    //     path: '',
-    //     redirectTo: '/dashboard/boards',
-    //     pathMatch: 'full'
-    // },
-    { 
-        path: '', component: DashboardComponent 
+    {
+        path: '',
+        redirectTo: '/dashboard/boards',
+        pathMatch: 'full'
     },
     { 
         path: 'boards', component: BoardsComponent 
