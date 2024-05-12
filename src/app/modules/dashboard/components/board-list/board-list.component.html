@@ -1,5 +1,4 @@
-
-<div class=" grid grid-flow-col auto-cols-auto gap-4 first:ml-4">
+<!-- <div class=" grid grid-flow-col auto-cols-auto gap-4 first:ml-4">
     @for (board of boards(); track board.id) {
     <div class="bg-dark-container w-64  h-auto p-4 rounded-lg break-words">
             <div class="flex flex-col gap-y-1">
@@ -25,6 +24,32 @@
             </div>
     </div>
 }
-</div>
+</div> -->
+
+@for (board of boards(); track board) {
+    <li>
+        <div class="bg-dark-container w-64 p-4 rounded-lg break-words">
+            <h2 class="cursor-pointer font-roboto">{{board.title}}</h2>
+            @for (card of board.cards; track card) {
+                <div class="bg-dark-input rounded-lg mb-1 py-2 px-3 text-left cursor-pointer border-4 border-dark-input hover:border-selected">
+                    @for (label of card.label; track label) {
+                        <span [style.backgroundColor]="label.color" 
+                            class="font-roboto px-2 rounded-lg mr-1 mt-1 mb-2">
+                            {{label.title}}
+                        </span>
+                    }
+                    <h3 class="font-roboto">{{card.title}}</h3>
+                </div>
+            }
+            <button class="text-left flex items-center gap-x-2 mt-2">
+                <img src="../../../../../assets/icons/add.png" alt="" class="w-6 h-6">
+                <span class="font-roboto">Agregar tarjeta</span>
+            </button>
+        </div>
+    </li>
+}
+
+
+
 
 

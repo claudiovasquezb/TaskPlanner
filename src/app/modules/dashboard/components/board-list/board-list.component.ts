@@ -9,6 +9,44 @@ import { Component, signal } from '@angular/core';
 })
 export class BoardListComponent {
 
+  public boards2 = signal<Board[]>([
+    {
+      id: '1',
+      title: 'En proceso',
+      cards: [
+        {
+          id: '1',
+          title: "Board list",
+          description: "Creando el componente board list para mostrar todos los tableros",
+          label: [
+            {
+              id: '1',
+              title: 'Prioridad alta',
+              color: '#AE2E24'
+            },
+            {
+              id: '2',
+              title: 'Tablero',
+              color: '#216E4E'
+            }
+          ]
+        },
+        {
+          id: '2',
+          title: "Highlights component",
+          description: "Creando el componente board list para mostrar todos los tableros",
+          label: [
+            {
+              id: '1',
+              title: 'Prioridad media',
+              color: '#7F5F01'
+            }
+          ]
+        },
+      ]
+    }
+  ]);
+
   public boards = signal<Board[]>([
     {
       id: '1',

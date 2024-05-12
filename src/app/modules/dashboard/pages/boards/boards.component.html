@@ -1,9 +1,11 @@
 <app-navbar/>
-<div class="flex flex-1 w-full  fixed top-0 bottom-0">
-    <!-- <div class="bg-dark-container pt-20 w-72"></div> -->
-    <app-sidebar/>
-    <!-- <app-board-list class="ml-[304px] mt-[72px]"/> -->
-    <app-board-list class="mt-[72px] overflow-auto"/>
+<div class="flex flex-1 absolute overflow-y-auto bottom-0 top-0 h-full">
+    <app-sidebar class="bottom-0 h-full"/>
+    <div class="flex flex-col flex-1 overflow-y-auto">
+        <ol class=" overflow-x-auto overflow-y-hidden flex list-none ">
+            <app-board-list class="mt-[72px] ml-4 overflow-auto flex gap-2"/>
+        </ol>
+    </div>
 </div>
 
 
