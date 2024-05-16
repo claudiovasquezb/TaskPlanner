@@ -5,5 +5,7 @@ const { getBoards, getBoard, createBoard, updateBoard, deleteBoard } = require('
 const router = Router();
 
 router.get('/', getBoards);
+router.get('/:id', getBoard);
+router.post('/', createBoard);
 
 module.exports = router;

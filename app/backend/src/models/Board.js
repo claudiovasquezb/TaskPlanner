@@ -32,6 +32,11 @@ const BoardSchema = Schema({
     },
     card: {
         type: [CardSchema]
+    },
+    user: {
+        type: Schema.Types.ObjectId, // Con esto decimos que el type va a ser una referencia
+        ref: 'User', // Como referencia ponemos el nombre del schema User
+        //required: true
     }
 });
 
