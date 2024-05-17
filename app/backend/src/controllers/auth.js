@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
+const { generateJWT } = require('../helpers/jwt');
 
 
 
@@ -21,16 +22,18 @@ const createUser = async(req, res) => {
         bcrypt.genSalt(saltRounds, function(err, salt) {
             bcrypt.hash(password, salt, async(err, hash) => {
                 user.password = hash;
-                // generate JWT
-
-
                 await user.save();
             });
         });
 
+        // generate JWT
+        const token = await generateJWT(user.id, user.name);
+
         res.status(201).json({
             ok: true,
-            name: user.name
+            uid: user.id,
+            name: user.name,
+            token
         });
     } catch (error) {
         res.status(500).json({
@@ -61,11 +64,13 @@ const loginUser = async(req, res) => {
         });
 
         // Generate JWT
-
+        const token = await generateJWT(user.id, user.name);
 
         res.json({
             ok: true,
-            name: user.name
+            uid: user.id,
+            name: user.name,
+            token
         });
 
     } catch (error) {
