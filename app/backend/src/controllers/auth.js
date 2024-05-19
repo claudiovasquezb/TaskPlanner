@@ -18,13 +18,9 @@ const createUser = async(req, res) => {
         user = new User(req.body);
 
         // Encrypt password
-        const saltRounds = 10;
-        bcrypt.genSalt(saltRounds, function(err, salt) {
-            bcrypt.hash(password, salt, async(err, hash) => {
-                user.password = hash;
-                await user.save();
-            });
-        });
+        const salt = bcrypt.genSaltSync();
+        user.password = bcrypt.hashSync( password, salt );
+        await user.save();
 
         // generate JWT
         const token = await generateJWT(user.id, user.name);
@@ -54,14 +50,13 @@ const loginUser = async(req, res) => {
             });
         }
         // Compare password with user's encrypted password
-        bcrypt.compare(password, user.password, function(err, result) {
-            if(!result) {
-                return res.status(400). json({
-                    ok: false,
-                    msg: 'Incorrect password'
-                });
-            }
-        });
+        const validPassword = bcrypt.compareSync(password, user.password);
+        if(!validPassword) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'Incorrect password'
+            });
+        }
 
         // Generate JWT
         const token = await generateJWT(user.id, user.name);
@@ -83,7 +78,12 @@ const loginUser = async(req, res) => {
 
 }
 const renewToken = async(req, res) => {
-
+    const { uid, name } = req;
+    const token = await generateJWT( uid, name );
+    res.json({
+        ok: true,
+        token
+    });
 }
 
 
