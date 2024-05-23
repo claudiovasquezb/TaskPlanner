@@ -32,14 +32,6 @@ export class LoginComponent {
     ]
   });
 
-  get email() {
-    return this.form.get('email');
-  }
-
-  get password() {
-    return this.form.get('password');
-  }
-
   onSubmit(): void {
     if(this.form.valid) {
       const { email, password } = this.form.getRawValue();
