@@ -1,46 +1,55 @@
 {
-  "hash": "21aeb722",
-  "configHash": "06c33c44",
+  "hash": "d5d121a9",
+  "configHash": "f1da723f",
   "lockfileHash": "f24a7029",
-  "browserHash": "44206824",
+  "browserHash": "e1f3943f",
   "optimized": {
     "@angular/core": {
       "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "bc0e2243",
+      "fileHash": "987a626b",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "f25adeef",
+      "fileHash": "39e34e18",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "1d9a892d",
+      "fileHash": "f1fdca42",
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
-      "fileHash": "85b5fce7",
+      "fileHash": "c5f33718",
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
       "file": "rxjs.js",
-      "fileHash": "d7fd4749",
+      "fileHash": "cba4bfc8",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "5d5eec29",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-GC3RGXL5": {
-      "file": "chunk-GC3RGXL5.js"
+    "chunk-HAWMBQCF": {
+      "file": "chunk-HAWMBQCF.js"
     },
-    "chunk-Y7M7PEFM": {
-      "file": "chunk-Y7M7PEFM.js"
+    "chunk-CVPZYJ7U": {
+      "file": "chunk-CVPZYJ7U.js"
+    },
+    "chunk-GOHQVG67": {
+      "file": "chunk-GOHQVG67.js"
     },
     "chunk-7G4ISVJH": {
       "file": "chunk-7G4ISVJH.js"
