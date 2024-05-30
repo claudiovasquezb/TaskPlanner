@@ -1,9 +1,19 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { Observable, tap, map } from 'rxjs';
+import { environment } from '../../../environments/environment';
+import { TokenService } from './token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BoardService {
 
-  constructor() { }
+  private http = inject(HttpClient);
+  private token = inject(TokenService);
+
+  public getBoards(): Observable<any> {
+    const url = `${environment.API_URL}/boards`;
+    return this.http.get(url);
+  }
 }

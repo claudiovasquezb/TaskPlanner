@@ -16,7 +16,7 @@ router.post('/register',
 createUser);
 
 router.post('/', loginUser);
-router.get('/renew', validateJWT, renewToken);
+router.get('/renew',validateJWT, renewToken);
 
 
 module.exports = router;

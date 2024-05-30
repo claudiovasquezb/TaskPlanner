@@ -2,8 +2,6 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const { generateJWT } = require('../helpers/jwt');
 
-
-
 const createUser = async(req, res) => {
 
     const { email, password } = req.body;
@@ -38,6 +36,7 @@ const createUser = async(req, res) => {
         });
     }
 }
+
 const loginUser = async(req, res) => {
 
     const { email, password } = req.body;
@@ -74,18 +73,19 @@ const loginUser = async(req, res) => {
             msg: 'Talk to administrator'
         });
     }
-
-
 }
+
 const renewToken = async(req, res) => {
     const { uid, name } = req;
     const token = await generateJWT( uid, name );
+    console.log('new token: ',token);
     res.json({
         ok: true,
+        uid,
+        name,
         token
     });
 }
-
 
 module.exports = {
     createUser,

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { AuthService } from '../../../../services/auth.service';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../../../services';
 import { firstValueFrom } from 'rxjs';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -16,6 +16,7 @@ export class LoginComponent {
 
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
+  private routerService = inject(Router);
 
   public form = this.fb.nonNullable.group({
     email: ['', 
@@ -38,7 +39,10 @@ export class LoginComponent {
       this.authService.login(email, password).subscribe({
         next: (response) => {
           console.log(response);
-          // NAVEGAR A DASHBOARD
+          this.routerService.navigateByUrl('/dashboard');
+        },
+        error: (error) => {
+          console.log(error);
         }
       });
     } else {

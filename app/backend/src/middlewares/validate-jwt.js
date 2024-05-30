@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 const validateJWT = ( req, res, next ) => {
-
     // x-token headers (personalized token)
     const token = req.header('x-token');
 
@@ -12,6 +11,7 @@ const validateJWT = ( req, res, next ) => {
     }
 
     try {
+        console.log('Token: ',req.header('x-token'));
         // Get uid and name from payload in headers token
         const { uid, name} = jwt.verify( token, process.env.SECRET_JWT_SEED);
         req.uid = uid;

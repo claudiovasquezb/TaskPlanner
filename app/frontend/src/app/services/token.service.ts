@@ -11,11 +11,12 @@ export class TokenService {
     localStorage.setItem('token', token);
   }
 
-  public getToken() {
+  public getToken(){
     return localStorage.getItem('token');
   }
 
   public clearToken() {
     localStorage.removeItem('token');
   }
+
 }
