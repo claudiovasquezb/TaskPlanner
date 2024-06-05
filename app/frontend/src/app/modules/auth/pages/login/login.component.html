@@ -1,5 +1,5 @@
 <div class="max-w-[500px] h-screen flex justify-center items-center mx-auto">
-    <div class="bg-dark-container w-full h-auto rounded-[10px] px-2.5 py-9 mx-9">
+    <div class="bg-dark-container w-full h-auto rounded-lg px-2.5 py-9 mx-9">
         <h2 class="text-center font-bold text-3xl mb-9 font-montserrat truncate">Iniciar sesión</h2>
         <form action="" class="flex flex-col px-9 font-roboto" [formGroup]="form" (ngSubmit)="onSubmit()">
             <label for="email" class="text-base font-semibold truncate flex flex-col mb-6">
@@ -8,7 +8,7 @@
                 type="email" 
                 id="email" 
                 placeholder="Ingresa tu Email"  
-                class=" bg-dark-input text-sm w-auto h-10 rounded-[10px] pl-5 truncate outline-none"
+                class=" bg-dark-input text-sm w-auto h-10 rounded-lg pl-5 truncate outline-none"
                 formControlName="email"
                 >
                 @if (form.get('email')?.touched && form.get('email')?.hasError('email')) {
@@ -25,7 +25,7 @@
                 type="password" 
                 id="password" 
                 placeholder="Ingresa tu Contraseña" 
-                class=" bg-dark-input text-sm h-10 rounded-[10px] pl-5 truncate outline-none"
+                class=" bg-dark-input text-sm h-10 rounded-lg pl-5 truncate outline-none"
                 formControlName="password"
                 >
                 @if (form.get('password')?.touched && form.get('password')?.hasError('minlength')) {
@@ -36,7 +36,7 @@
                 }
             </label>
             
-            <button class="bg-accent w-1/2 h-10 rounded-[10px] mx-auto mb-6">
+            <button class="bg-accent w-1/2 h-10 rounded-lg mx-auto mb-6">
                 <p class="truncate ">Iniciar sesión</p>
             </button>
             <div class="flex flex-col justify-center items-center truncate">

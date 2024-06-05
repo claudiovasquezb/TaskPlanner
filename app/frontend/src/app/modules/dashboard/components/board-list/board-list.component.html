@@ -16,7 +16,7 @@
                 </div>
                 
                 @for (card of board.cards; track card.id) {
-                    <div class="bg-dark-input rounded-lg mb-1 py-2 px-3 text-left cursor-pointer border-2 border-dark-input hover:border-selected">
+                    <div class="bg-dark-input rounded-lg mb-1 py-2 px-3 text-left cursor-pointer border-2 border-dark-input hover:border-selected" (click)="modalService.openModal()">
                         @for (label of card.label; track label.id) {
                             <span [style.backgroundColor]="label.color" 
                                 class="font-roboto px-2 rounded-lg mr-1 mt-1 mb-2">
@@ -34,6 +34,10 @@
         </li>
     }
 </div>
+@if(modalService.isModalOpen) {
+
+    <app-edit-board-modal></app-edit-board-modal>
+}
 
 
 

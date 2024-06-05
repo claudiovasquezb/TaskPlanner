@@ -1,11 +1,12 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { Board } from '../../../../models';
-import { AuthService, BoardService, TokenService } from '../../../../services';
+import { AuthService, BoardService, ModalService } from '../../../../services';
+import { EditBoardModalComponent } from '../edit-board-modal/edit-board-modal.component';
 
 @Component({
   selector: 'app-board-list',
   standalone: true,
-  imports: [],
+  imports: [EditBoardModalComponent],
   templateUrl: './board-list.component.html',
   styleUrl: './board-list.component.css'
 })
@@ -13,9 +14,10 @@ export class BoardListComponent implements OnInit{
 
   private boardService = inject(BoardService);
   private authService = inject(AuthService);
-  private tokenService = inject(TokenService);
+  public modalService = inject(ModalService);
 
   private draggedItem: number = 0;
+  public modalSwitch: boolean = true;
 
   ngOnInit(): void {
 

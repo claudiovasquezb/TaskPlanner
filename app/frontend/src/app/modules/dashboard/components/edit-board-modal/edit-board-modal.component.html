@@ -1,0 +1,37 @@
+<div class="flex flex-col gap-y-2 bg-dark-container w-full md:max-w-[1000px] p-4 font-roboto rounded-lg absolute z-10 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 inset-0">
+    <section class="flex items-center gap-x-2">
+        <img class="w-6 h-6" src="../../../../../assets/icons/input-field.svg" alt="">
+        <input type="text" value="Card Title" class="bg-dark-container focus:bg-dark-body text-lg w-full">
+        <img class="w-6 h-6 cursor-pointer" src="../../../../../assets/icons/no-alt.svg" alt="close modal" (click)="modalService.closeModal()">
+    </section>
+
+    <section>
+        <div class="flex">
+            <img class="w-6 h-6" src="../../../../../assets/icons/bullet-points.svg" alt="close modal">
+            <h3 class="text-lg">Labels</h3>
+        </div>
+        <div class="flex gap-x-1 pl-6">
+            <button class="bg-red-600 rounded-lg px-2 py-1">Label 1</button>
+            <button class="border-1 bg-light-grey rounded-lg p-1">
+                <img src="../../../../../assets/icons/add.svg" class="w-6 h-6" alt="add label" srcset="">
+            </button>
+        </div>
+
+    </section>
+    <section>
+        <div class="flex justify-between">
+            <div class="flex">
+                <img class="w-6 h-6" src="../../../../../assets/icons/align-left.svg" alt="">
+                <h3 class="text-lg">Descripción</h3>
+            </div>
+            <button class="border-1 bg-light-grey rounded-lg px-3 py-1">Edit</button>
+        </div>
+        <p class="bg-dark-container text-base cursor-pointer pl-6">Esto es una descripción</p>
+    </section>
+
+
+</div>
+
+
+
+
