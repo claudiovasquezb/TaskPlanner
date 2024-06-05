@@ -12,7 +12,8 @@ module.exports = {
         'dark-input':'#222222',
         'dark-placeholder': 'B0B0B0',
         'selected': '#4A5878',
-        'light-grey': '#444444'
+        'light-grey': '#444444',
+        'active-grey': '#555555'
       },
       fontFamily: {
         'montserrat': ['Montserrat', 'sans-serif'],

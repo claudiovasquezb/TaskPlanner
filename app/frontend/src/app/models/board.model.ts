@@ -1,5 +1,6 @@
 export interface Board {
     id: string;
+    order: number;
     title: string;
     cards: {
       id: string

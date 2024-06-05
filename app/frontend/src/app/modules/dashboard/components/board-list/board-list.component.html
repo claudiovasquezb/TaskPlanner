@@ -1,11 +1,23 @@
 <div class="flex gap-x-4 list-none">
-    @for (board of boards(); track board) {
-        <li class="py-4 first:pl-4 last:pr-4">
+    @for (board of boards(); track board.id; let index = $index) {
+        <li class="py-4 first:pl-4 last:pr-4" 
+            draggable="true" 
+            (dragstart)="handleDragStart(index)" 
+            (dragover)="handleDragOver($event)" 
+            (drop)="handleDrop(index)" 
+            (dragend)="handleDragEnd()"
+        >
             <div class="bg-dark-container w-64 p-4 rounded-lg break-words">
-                <h2 class="cursor-pointer font-roboto">{{board.title}}</h2>
-                @for (card of board.cards; track card) {
-                    <div class="bg-dark-input rounded-lg mb-1 py-2 px-3 text-left cursor-pointer border-4 border-dark-input hover:border-selected">
-                        @for (label of card.label; track label) {
+                <div class="flex justify-between items-center pb-2">
+                    <h2 class=" w-full cursor-pointer font-roboto">{{board.title}}</h2>
+                    <button class="w-8 h-8 p-2 hover:bg-light-grey rounded-lg active:bg-active-grey">
+                        <img src="../../../../../assets/icons/options.svg" alt="" class="w-full h-full">
+                    </button>
+                </div>
+                
+                @for (card of board.cards; track card.id) {
+                    <div class="bg-dark-input rounded-lg mb-1 py-2 px-3 text-left cursor-pointer border-2 border-dark-input hover:border-selected">
+                        @for (label of card.label; track label.id) {
                             <span [style.backgroundColor]="label.color" 
                                 class="font-roboto px-2 rounded-lg mr-1 mt-1 mb-2">
                                 {{label.title}}
@@ -14,15 +26,14 @@
                         <h3 class="font-roboto">{{card.title}}</h3>
                     </div>
                 }
-                <button class="text-left flex items-center gap-x-2 mt-2">
-                    <img src="../../../../../assets/icons/add.png" alt="" class="w-6 h-6">
+                <button class="w-full py-1 px-1 text-left flex items-center gap-x-2 mt-2 hover:bg-light-grey rounded-lg active:bg-active-grey">
+                    <img src="../../../../../assets/icons/add.svg" alt="" class="w-6 h-6">
                     <span class="font-roboto">Agregar tarjeta</span>
                 </button>
             </div>
         </li>
     }
 </div>
-
 
 
 

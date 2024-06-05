@@ -15,22 +15,49 @@ export class BoardListComponent implements OnInit{
   private authService = inject(AuthService);
   private tokenService = inject(TokenService);
 
+  private draggedItem: number = 0;
 
   ngOnInit(): void {
 
     this.authService.renewToken().subscribe();
     this.boardService.getBoards().subscribe({
       next: (response) => {
-        console.log(response); 
+        //this.boards.set(response.boards);
+        console.log(this.boards());
       }
     });
+
+
+    
+  }
+  
+  public handleDragStart(index: number) {
+    this.draggedItem = index;
+    //console.log(this.draggedItem);
+    console.log(this.boards());
+    
   }
 
+  public handleDragOver(event: Event) {
+    event.preventDefault();
+  }
+
+  public handleDrop(index: number) {
+    const boardArray: Array<Board> = [...this.boards()];
+    const droppedItem: Board = boardArray[this.draggedItem];
+    const swichedItem: Board = boardArray[index];
+    boardArray.splice(index, 1, droppedItem);
+    boardArray.splice(this.draggedItem, 1, swichedItem);
+    this.boards.set(boardArray);
+  }
+
+  public handleDragEnd() {}
   
-  
+  public boards2 = signal<Board[]>([]);
   public boards = signal<Board[]>([
     {
       id: '1',
+      order: 1,
       title: 'En proceso',
       cards: [
         {
@@ -66,7 +93,8 @@ export class BoardListComponent implements OnInit{
     },
     {
       id: '2',
-      title: 'Por hacer',
+      order: 2,
+      title: 'Por hacer 1',
       cards: [
         {
           id: '1',
@@ -76,8 +104,9 @@ export class BoardListComponent implements OnInit{
       ]
     },
     {
-      id: '2',
-      title: 'Por hacer',
+      id: '3',
+      order: 3,
+      title: 'Por hacer 2',
       cards: [
         {
           id: '1',
@@ -87,8 +116,9 @@ export class BoardListComponent implements OnInit{
       ]
     },
     {
-      id: '2',
-      title: 'Por hacer',
+      id: '4',
+      order: 4,
+      title: 'Por hacer 3',
       cards: [
         {
           id: '1',
@@ -98,8 +128,9 @@ export class BoardListComponent implements OnInit{
       ]
     },
     {
-      id: '2',
-      title: 'Por hacer',
+      id: '5',
+      order: 5,
+      title: 'Por hacer 4',
       cards: [
         {
           id: '1',
@@ -109,52 +140,9 @@ export class BoardListComponent implements OnInit{
       ]
     },
     {
-      id: '2',
-      title: 'Por hacer',
-      cards: [
-        {
-          id: '1',
-          title: "Autenticación con JWT",
-          description: "Crear sistema de autenticación usando JWT",
-        },
-      ]
-    },
-    {
-      id: '2',
-      title: 'Por hacer',
-      cards: [
-        {
-          id: '1',
-          title: "Autenticación con JWT",
-          description: "Crear sistema de autenticación usando JWT",
-        },
-      ]
-    },
-    {
-      id: '2',
-      title: 'Por hacer',
-      cards: [
-        {
-          id: '1',
-          title: "Autenticación con JWT",
-          description: "Crear sistema de autenticación usando JWT",
-        },
-      ]
-    },
-    {
-      id: '2',
-      title: 'Por hacer',
-      cards: [
-        {
-          id: '1',
-          title: "Autenticación con JWT",
-          description: "Crear sistema de autenticación usando JWT",
-        },
-      ]
-    },
-    {
-      id: '2',
-      title: 'Por hacer',
+      id: '6',
+      order: 6,
+      title: 'Por hacer 5',
       cards: [
         {
           id: '1',
