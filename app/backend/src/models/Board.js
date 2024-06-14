@@ -24,20 +24,38 @@ const CardSchema = Schema({
         type: [LabelSchema]
     }
 });
-
-const BoardSchema = Schema({
+const ListSchema = Schema({
     title: {
         type: String,
         required: true
     },
     card: {
         type: [CardSchema]
+    }
+});
+const BoardSchema = Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String
+    },
+    favorite: {
+        type: Boolean,
+        default: false
+    },
+    list: {
+        type: [ListSchema]
     },
     user: {
         type: Schema.Types.ObjectId, // Con esto decimos que el type va a ser una referencia
         ref: 'User', // Como referencia ponemos el nombre del schema User
         //required: true
     }
+}, { 
+    timestamps: true,
+    strict: true 
 });
 
 

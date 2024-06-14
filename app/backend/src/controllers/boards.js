@@ -2,14 +2,24 @@ const { response, request } = require('express');
 const Board = require('../models/Board');
 
 const getBoards = async(req, res = response) => {
-    const boards = await Board.find();
-    res.json({
-        ok: true,
-        boards
-    });
+    try {
+        const boards = await Board.find();
+        const boardsData = boards.map(board => ({
+            _id: board._id,
+            title: board.title,
+            favorite: board.favorite,
+            updatedAt: board.updatedAt
+        }));
+        res.json(boardsData);
+    } catch (error) {
+        res.status(500).json({
+            ok: false,
+            msg: 'Talk to administrador'
+        });
+    } 
 }
 
-const getBoard = async(req, res) => {
+const getBoardsList = async(req, res) => {
     const boardId = req.params.id;
     try {
         const board = await Board.findById(boardId);
@@ -20,8 +30,7 @@ const getBoard = async(req, res) => {
             });
         }
         res.json({
-            ok: true,
-            board
+            list: board.list
         });
     } catch (error) {
         res.status(500).json({
@@ -40,7 +49,7 @@ const createBoard = async(req, res) => {
             board: savedBoard
         });
     } catch (error) {
-        
+        throw new error("Cant create board");
     }
 }
 
@@ -52,12 +61,15 @@ const deleteBoard = async(req, res) => {
 
 }
 
+const getListsFromBoardId = async(req,res) => {
+}
+
 
 
 module.exports = {
     getBoards,
-    getBoard,
+    getBoardsList,
     createBoard,
     updateBoard,
-    deleteBoard
+    deleteBoard,
 }
